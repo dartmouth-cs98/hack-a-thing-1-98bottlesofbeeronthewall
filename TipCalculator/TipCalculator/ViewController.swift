@@ -9,6 +9,34 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var total:Double = 0;
+    
+    @IBOutlet weak var displayLabel: UILabel!
+
+    
+    @IBAction func numbers(_ sender: UIButton)
+    {
+        if total == 0 {
+            displayLabel.text = String(sender.tag)
+            total = Double(displayLabel.text!)!
+        } else {
+            displayLabel.text = displayLabel.text! + String(sender.tag)
+            total = Double(displayLabel.text!)!
+        }
+    }
+    
+    @IBAction func tip(_ sender: UIButton)
+    {
+        total = total * Double(sender.tag) / 100.0
+        displayLabel.text = String(total)
+    }
+    
+    @IBAction func clear(_ sender: Any)
+    {
+        total = 0
+        displayLabel.text = String(total)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
